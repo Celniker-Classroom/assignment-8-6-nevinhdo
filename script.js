@@ -32,17 +32,26 @@ function distance(x1, y1, x2, y2){
 }
 // 5) quadratic(a, b, c): roots of ax^2 + bx + c = 0
 function quadratic(a, b, c) {
+  a = Number(a);
+  b = Number(b);
+  c = Number(c);
+
   const discriminant = b * b - 4 * a * c;
-  
-  if (discriminant < 0) {
-    return null; // or undefined, [] depending on requirements
+
+  if (discriminant > 0) {
+    const sqrt = Math.sqrt(discriminant);
+    const x1 = (-b + sqrt) / (2 * a);
+    const x2 = (-b - sqrt) / (2 * a);
+    return [x1, x2];
   }
-  
-  const sqrt = Math.sqrt(discriminant);
-  const solution1 = (-b + sqrt) / (2 * a);
-  const solution2 = (-b - sqrt) / (2 * a);
-  
-  return [solution1, solution2];
+
+  if (discriminant === 0) {
+    return [-b / (2 * a)];
+  }
+
+  const real = -b / (2 * a);
+  const imag = Math.sqrt(-discriminant) / (2 * a);
+  return [real + "+" + imag + "i", real + "-" + imag + "i"];
 }
 
 // ----- Helpers -----

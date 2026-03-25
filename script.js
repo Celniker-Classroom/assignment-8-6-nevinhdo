@@ -31,19 +31,21 @@ function distance(x1, y1, x2, y2){
   return Math.sqrt(dx * dx + dy * dy);
 }
 // 5) quadratic(a, b, c): roots of ax^2 + bx + c = 0
-function quadratic(a, b, c){
+function quadratic(a, b, c) {
+  // Calculate discriminant
   const discriminant = b * b - 4 * a * c;
-
+  
+  // Handle negative discriminant
   if (discriminant < 0) {
-    return 'No real roots';
-  } else if (discriminant === 0) {
-    return -b / (2 * a);
-  } else {
-    const sqrtDisc = Math.sqrt(discriminant);
-    const root1 = (-b + sqrtDisc) / (2 * a);
-    const root2 = (-b - sqrtDisc) / (2 * a);
-    return [root1, root2];
+    return null; // or return [] or throw an error, depending on requirements
   }
+  
+  // For non-negative discriminant, calculate the roots
+  const sqrt = Math.sqrt(discriminant);
+  const root1 = (-b + sqrt) / (2 * a);
+  const root2 = (-b - sqrt) / (2 * a);
+  
+  return [root1, root2];
 }
 
 // ----- Helpers -----

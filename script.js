@@ -2,14 +2,49 @@
 
 // 1) myFunc(): persistent counter
 
+let counter = 0;
+function myFunc(){
+  counter ++ ;
+  return counter;
+  }
+
 // 2) getRandomNum(max): 1..max int or 0 if invalid
 
+function getRandomNum(max){
+  if (max < 1) {
+    return 0;
+  }
+
+  return Math.floor(Math.random() * max) + 1;
+}
+
 // 3) myAdder(x, y): numeric sum
+function myAdder(x, y){
+  return Number(x) + Number(y);
+}
 
 // 4) distance(x1, y1, x2, y2): Euclidean distance
 
+function distance(x1, y1, x2, y2){
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  return Math.sqrt(dx * dx + dy * dy);
+}
 // 5) quadratic(a, b, c): roots of ax^2 + bx + c = 0
+function quadratic(a, b, c){
+  const discriminant = b * b - 4 * a * c;
 
+  if (discriminant < 0) {
+    return 'No real roots';
+  } else if (discriminant === 0) {
+    return -b / (2 * a);
+  } else {
+    const sqrtDisc = Math.sqrt(discriminant);
+    const root1 = (-b + sqrtDisc) / (2 * a);
+    const root2 = (-b - sqrtDisc) / (2 * a);
+    return [root1, root2];
+  }
+}
 
 // ----- Helpers -----
 function $(id) { return document.getElementById(id); }
